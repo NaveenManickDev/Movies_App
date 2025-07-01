@@ -1,10 +1,18 @@
-import './App.css'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+// import './App.css'
+import Navnar from './pages/Navnar'
+import Home from './pages/Home'
+import WatchList from './pages/WatchList'
 
 function App() {
   return (
-    <>
-      <h1 className='text-3xl font-bold bg-red-700 text-green-700'>Hi Naveen</h1>
-    </>
+   <BrowserRouter>
+   <Navnar/>
+    <Routes>
+      <Route path='/' element={<Home/>}/>
+      <Route path='/watchlist' element={<WatchList/>}/>
+    </Routes>
+   </BrowserRouter>
   )
 }
 
