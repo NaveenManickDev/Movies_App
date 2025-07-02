@@ -79,7 +79,10 @@ const Home = () => {
           )
         })}
       </div>
-      <div className="pagination_container"></div>   
+      <div className="pagination_container flex justify-between mt-5">
+        <button className='p-2 bg-gray-700 text-white rounded'>PREV</button>  
+        <button className='p-2 bg-gray-700 text-white rounded'>NEXT</button>  
+      </div>   
     </div>
   )
 }
