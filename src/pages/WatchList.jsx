@@ -4,12 +4,16 @@ import { WatchListContext } from '../context/WatchListContext'
 import Moviecard from '../components/Moviecard'
 
 const WatchList = () => {
-  const {watchlist} = useContext(WatchListContext)
+  const {watchlist, genreList} = useContext(WatchListContext)
   const [search, setSearch] = useState("")
+
+  const [selectedGenre, setSeletctedGenre] = useState("")
 
   const filteredMovies = watchlist.filter((movie) => 
     movie.title.toLowerCase().includes(search.toLowerCase())
-  ) 
+  ).filter(movie => {
+    return !selectedGenre || movie.genre_ids.includes(Number(selectedGenre))
+  }) 
 
   return (
     <div className='p-4 pt-16'>
@@ -19,7 +23,7 @@ const WatchList = () => {
       transform -translate-x-1/2 z-10' onChange={(e) => setSearch(e.target.value)}/>
       
         <div className='mt-16 flex justify-center'>
-          <GenreFilter />
+          <GenreFilter genreList={genreList} setSeletctedGenre={setSeletctedGenre}/>
         </div>
 
         <div className="movies_container grid grid-cols-1 md:grid-cols-3 
